@@ -1,0 +1,3099 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Koperasi Sekolah SMK Muthia Harapan</title>
+
+    <!-- BOOTSTRAP CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- BOOTSTRAP ICONS -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <style>
+
+        /* == DASAR == */
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f9;
+            color: #17365d;
+        }
+
+        /* == SIDEBAR == */
+
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background: linear-gradient(180deg, #0d3d73, #06254b);
+            color: white;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .logo-area {
+            padding: 20px 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-area img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: white;
+            padding: 3px;
+        }
+
+        .logo-text h6 {
+            font-size: 11px;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .logo-text small {
+            font-size: 8px;
+            color: #d8e7f8;
+        }
+
+        .menu-title {
+            font-size: 9px;
+            color: #a9c4df;
+            padding: 18px 16px 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .menu {
+            padding: 0 10px;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 12px;
+            margin-bottom: 4px;
+            border-radius: 7px;
+            font-size: 11px;
+            transition: 0.2s;
+        }
+
+        .menu a:hover,
+        .menu a.active {
+            background: white;
+            color: #0d3d73;
+        }
+
+        .menu a i {
+            font-size: 15px;
+            min-width: 18px;
+        }
+
+        .logout {
+            border-top: 1px solid rgba(255,255,255,0.12);
+            margin-top: 20px;
+            padding-top: 10px;
+        }
+
+        /* == MAIN == */
+
+        .main {
+            margin-left: 240px;
+            min-height: 100vh;
+        }
+
+        .topbar {
+            height: 55px;
+            background: white;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 25px;
+            font-size: 11px;
+            color: #777;
+            position: sticky;
+            top: 0;
+            z-index: 900;
+        }
+
+        section {
+            padding: 35px 30px;
+            min-height: 300px;
+        }
+
+        .section-title {
+            margin-bottom: 20px;
+        }
+
+        .section-title h2 {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .section-title p {
+            color: #777;
+            font-size: 12px;
+            margin: 0;
+        }
+
+        /* == CARD == */
+
+        .card-custom {
+            background: white;
+            border: 1px solid #e0e5eb;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+        }
+
+        /* == BERANDA == */
+
+        .welcome-card {
+            display: flex;
+            align-items: stretch;
+            overflow: hidden;
+        }
+
+        .welcome-text {
+            flex: 1;
+            padding: 25px;
+        }
+
+        .welcome-text h3 {
+            font-size: 19px;
+            margin-bottom: 12px;
+        }
+
+        .welcome-text p {
+            color: #777;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .school-photo {
+            width: 35%;
+            min-height: 180px;
+        }
+
+        .school-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .btn-blue {
+            background: #0d55c7;
+            border: none;
+            color: white;
+            border-radius: 6px;
+            padding: 10px 18px;
+            font-size: 12px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-blue:hover {
+            background: #08449f;
+            color: white;
+        }
+
+        .hours-card {
+            padding: 20px;
+            margin-top: 15px;
+        }
+
+        .hours-card h5 {
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 9px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 11px;
+            color: #666;
+        }
+
+        .hours-row:last-child {
+            border-bottom: none;
+        }
+
+        .quick-title {
+            margin: 25px 0 12px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .quick-card {
+            background: white;
+            border: 1px solid #e0e5eb;
+            padding: 18px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #17365d;
+        }
+
+        .quick-card i {
+            color: #0d55c7;
+            font-size: 22px;
+        }
+
+        .quick-card h6 {
+            font-size: 12px;
+            margin: 8px 0 5px;
+        }
+
+        .quick-card small {
+            color: #888;
+            font-size: 10px;
+        }
+
+        /* == PENCARIAN == */
+
+        .search-box {
+            max-width: 250px;
+        }
+
+        .search-box .input-group-text {
+            background: white;
+        }
+
+        .search-box input {
+            font-size: 11px;
+        }
+
+        /* == TABEL ANGGOTA == */
+
+        .table-card {
+            padding: 12px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            min-width: 600px;
+            border-collapse: collapse;
+        }
+
+        table th {
+            background: #eef3f8;
+            font-size: 10px;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table td {
+            padding: 11px 12px;
+            font-size: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* == STOK BARANG == */
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #e0e5eb;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+        }
+
+        .product-image {
+         width: 100%;
+         height: 240px;
+        background: #f1f3f5;
+        overflow: hidden;
+  }
+      .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+        .product-info {
+            padding: 13px;
+        }
+
+        .product-info h6 {
+            font-size: 11px;
+            margin-bottom: 8px;
+            color: #17365d;
+        }
+
+        .price {
+            color: #0753bd;
+            font-weight: bold;
+            font-size: 11px;
+        }
+
+        .stock {
+            color: #888;
+            font-size: 9px;
+            margin-bottom: 10px;
+        }
+
+        .product-btn {
+            width: 100%;
+            border: none;
+            background: #0d55c7;
+            color: white;
+            padding: 9px;
+            border-radius: 6px;
+            font-size: 10px;
+        }
+
+        .product-btn:hover {
+            background: #083f96;
+        }
+
+        /* == DETAIL PRODUK == */
+
+        .detail-wrapper {
+            display: grid;
+            grid-template-columns: 45% 55%;
+            background: white;
+            border: 1px solid #e0e5eb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .detail-photo {
+         min-height: 430px;
+         background: #f3f5f7;
+         overflow: hidden;
+         }
+        .detail-photo img {
+         width: 100%;
+         height: 100%;
+         min-height: 430px;
+         object-fit: cover;
+         object-position: center;
+         display: block;
+       }
+
+        .detail-content {
+            padding: 25px;
+        }
+
+        .back-link {
+            font-size: 10px;
+            color: #0d55c7;
+            text-decoration: none;
+        }
+
+        .detail-content h2 {
+            font-size: 20px;
+            margin: 12px 0 5px;
+        }
+
+        .detail-price {
+            color: #0753bd;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .detail-description {
+            font-size: 10px;
+            color: #777;
+            line-height: 1.6;
+        }
+
+        .option-title {
+            font-size: 10px;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 7px;
+        }
+
+        .option-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .option-buttons button {
+            border: 1px solid #ccd3dc;
+            background: white;
+            padding: 7px 12px;
+            border-radius: 5px;
+            font-size: 10px;
+            cursor: pointer;
+        }
+
+        .option-buttons button:hover,
+        .option-buttons button.selected {
+            background: #0d55c7;
+            color: white;
+            border-color: #0d55c7;
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+            width: max-content;
+        }
+
+        .quantity button {
+            width: 35px;
+            height: 35px;
+            border: 1px solid #ddd;
+            background: #f3f4f6;
+        }
+
+        .quantity span {
+            width: 40px;
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            font-size: 11px;
+        }
+
+        .continue-btn {
+            margin-top: 18px;
+            width: 100%;
+            background: #0d55c7;
+            color: white;
+            border: none;
+            padding: 11px;
+            border-radius: 6px;
+            font-size: 11px;
+        }
+
+        /* ==  PENGAMBILAN & PEMBAYARAN == */
+
+        .choice-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .choice-card {
+            background: white;
+            border: 1px solid #dce2e8;
+            border-radius: 10px;
+            padding: 18px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .choice-card:hover,
+        .choice-card.selected {
+            border: 2px solid #0d55c7;
+            background: #f5f9ff;
+        }
+
+        .choice-card i {
+            color: #0d55c7;
+            font-size: 21px;
+        }
+
+        .choice-card h6 {
+            font-size: 11px;
+            margin: 8px 0 5px;
+        }
+
+        .choice-card p {
+            font-size: 9px;
+            color: #888;
+            margin: 0;
+        }
+
+        .summary-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 18px;
+            margin-top: 18px;
+        }
+
+        .summary-card h5 {
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            padding: 6px 0;
+        }
+
+        .total {
+            border-top: 1px solid #ddd;
+            margin-top: 8px;
+            padding-top: 12px;
+            font-weight: bold;
+            color: #0753bd;
+        }
+
+        .order-btn {
+            width: 100%;
+            margin-top: 12px;
+            border: none;
+            background: #0d55c7;
+            color: white;
+            padding: 11px;
+            border-radius: 6px;
+            font-size: 11px;
+        }
+
+        /* == LOGIN == */
+
+        #loginPage {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #0d3d73, #0a579e);
+            z-index: 5000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-box {
+            background: white;
+            width: 100%;
+            max-width: 580px;
+            border-radius: 25px;
+            padding: 45px 50px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .login-logo {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
+
+        .login-box h1 {
+            font-size: 30px;
+            font-weight: bold;
+            color: #0d3d73;
+            margin-bottom: 8px;
+        }
+
+        .login-box > p {
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        .login-form {
+            text-align: left;
+        }
+
+        .login-form label {
+            display: block;
+            font-weight: bold;
+            margin: 18px 0 7px;
+            color: #17365d;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ccd3dc;
+            border-radius: 10px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .login-form input:focus {
+            border-color: #0d55c7;
+        }
+       .input-icon {
+    position: relative;
+    width: 100%;
+}
+
+.input-icon i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #0d55c7;
+    font-size: 17px;
+    z-index: 2;
+}
+
+.input-icon input {
+    width: 100%;
+    padding: 14px 14px 14px 45px;
+    border: 1px solid #ccd3dc;
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+}
+
+.input-icon input:focus {
+    border-color: #0d55c7;
+    box-shadow: 0 0 0 2px rgba(13, 85, 199, 0.1);
+}
+        .login-btn {
+            width: 100%;
+            margin-top: 25px;
+            border: none;
+            background: #0d55c7;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .login-error {
+            color: #dc3545;
+            font-size: 12px;
+            margin-top: 10px;
+            display: none;
+        }
+      
+
+        /* == FOOTER == */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #888;
+            font-size: 10px;
+        }
+
+        /* == RESPONSIVE == */
+
+        @media(max-width: 900px) {
+
+            .sidebar {
+                width: 190px;
+            }
+
+            .main {
+                margin-left: 190px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .choice-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .detail-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width: 600px) {
+
+            .sidebar {
+                width: 170px;
+            }
+
+            .main {
+                margin-left: 170px;
+            }
+
+            .topbar {
+                padding-right: 10px;
+                font-size: 8px;
+            }
+
+            section {
+                padding: 25px 15px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .choice-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .welcome-card {
+                flex-direction: column;
+            }
+
+            .welcome-text {
+                padding: 18px;
+            }
+
+            .school-photo {
+                width: 100%;
+                height: 180px;
+            }
+
+            .detail-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-photo {
+                min-height: 250px;
+            }
+
+            .detail-photo img {
+                height: 230px;
+            }
+
+            .login-box {
+                padding: 30px 25px;
+            }
+
+            .login-box h1 {
+                font-size: 22px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- === LOGIN === -->
+
+<div id="loginPage">
+
+    <div class="login-box">
+
+        <img
+            src="logo.jpeg"
+            class="login-logo"
+            alt="Logo Sekolah"
+        >
+
+        <h1>
+            KOPERASI SEKOLAH SMK
+            <br>
+            MUTHIA HARAPAN
+        </h1>
+
+        <p>
+            Selamat Datang! Silakan Login Untuk Melanjutkan.
+        </p>
+
+        <div class="login-form">
+
+            <label>
+                NIS / Username
+            </label>
+          <div class="input-icon">
+          <i class="bi bi-person-fill"></i>
+            <input
+                type="text"
+                id="username"
+                placeholder="Masukkan NIS / username"
+            >
+          </div>
+        </div>
+
+            
+   <div class="login-form">
+            <label>
+                Password
+            </label>
+     <div class="input-icon">
+       <i class="bi bi-eye-slash-fill"> </i>
+            <input
+                type="password"
+                id="password"
+                placeholder="Masukkan password"
+            >
+     </div>
+   </div>
+
+            <button
+                class="login-btn"
+                onclick="login()"
+            >
+                <i class="bi bi-box-arrow-in-right"></i>
+                Masuk
+            </button>
+
+            <div
+                class="login-error"
+                id="loginError"
+            >
+                Username dan password harus diisi.
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- === SIDEBAR === -->
+
+<aside class="sidebar">
+
+    <div class="logo-area">
+
+        <img
+            src="logo.jpeg"
+            alt="Logo Sekolah"
+        >
+
+        <div class="logo-text">
+
+            <h6>
+                KOPERASI SEKOLAH
+            </h6>
+
+            <small>
+                SMK MUTHIA HARAPAN CICALENGKA
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <div class="menu-title">
+        Menu Utama
+    </div>
+
+
+    <div class="menu">
+
+        <a
+            href="#beranda"
+            class="active"
+            onclick="setActive(this)"
+        >
+            <i class="bi bi-house-door-fill"></i>
+            Beranda
+        </a>
+
+        <a
+            href="#anggota"
+            onclick="setActive(this)"
+        >
+            <i class="bi bi-people-fill"></i>
+            Daftar Anggota
+        </a>
+
+        <a
+            href="#stok"
+            onclick="setActive(this)"
+        >
+            <i class="bi bi-box-seam-fill"></i>
+            Stok Barang
+        </a>
+
+        <a
+            href="#detail"
+            onclick="setActive(this)"
+        >
+            <i class="bi bi-file-earmark-text-fill"></i>
+            Detail Produk
+        </a>
+
+        <a
+            href="#pembayaran"
+            onclick="setActive(this)"
+        >
+            <i class="bi bi-cart-check-fill"></i>
+            Opsi Pengambilan & Pembayaran
+        </a>
+
+
+        <div class="logout">
+
+            <a
+                href="#"
+                onclick="logout()"
+            >
+                <i class="bi bi-box-arrow-left"></i>
+                Logout
+            </a>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+<!-- === MAIN === -->
+
+<main class="main">
+
+    <div class="topbar">
+
+        Koperasi Sekolah SMK Muthia Harapan
+
+    </div>
+
+
+    <!-- === BERANDA === -->
+
+    <section id="beranda">
+
+        <div class="section-title">
+
+            <h2>
+                Beranda
+            </h2>
+
+            <p>
+                Selamat datang di Koperasi Sekolah SMK Muthia Harapan Cicalengka.
+            </p>
+
+        </div>
+
+
+        <div class="welcome-card card-custom">
+
+            <div class="welcome-text">
+
+                <h3>
+                    Koperasi Sekolah SMK Muthia Harapan Cicalengka
+                </h3>
+
+                <p>
+                    Koperasi sekolah menyediakan berbagai kebutuhan
+                    seragam dan perlengkapan sekolah dengan harga
+                    terjangkau dan kualitas terbaik.
+                </p>
+
+                <a
+                    href="#stok"
+                    class="btn-blue"
+                >
+                    <i class="bi bi-box-seam"></i>
+                    Lihat Stok Barang
+                </a>
+
+            </div>
+
+
+            <div class="school-photo">
+
+                <img
+                    src="sekolah.jpg"
+                    alt="Foto Sekolah"
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="hours-card card-custom">
+
+            <h5>
+                <i class="bi bi-clock-fill"></i>
+                Jam Buka Koperasi
+            </h5>
+
+            <div class="hours-row">
+                <span>Senin - Kamis</span>
+                <b>07.00 - 15.00</b>
+            </div>
+
+            <div class="hours-row">
+                <span>Jumat</span>
+                <b>07.00 - 14.00</b>
+            </div>
+
+            <div class="hours-row">
+                <span>Istirahat</span>
+                <b>10.00 & 12.00</b>
+            </div>
+
+        </div>
+
+
+        <div class="quick-title">
+            Akses Cepat
+        </div>
+
+        <div class="quick-grid">
+
+            <a
+                href="#anggota"
+                class="quick-card"
+            >
+
+                <i class="bi bi-people-fill"></i>
+
+                <h6>
+                    Daftar Anggota
+                </h6>
+
+                <small>
+                    Lihat daftar siswa
+                </small>
+
+            </a>
+
+
+            <a
+                href="#stok"
+                class="quick-card"
+            >
+
+                <i class="bi bi-box-seam-fill"></i>
+
+                <h6>
+                    Stok Barang
+                </h6>
+
+                <small>
+                    Lihat semua barang
+                </small>
+
+            </a>
+
+
+            <a
+                href="#detail"
+                class="quick-card"
+            >
+
+                <i class="bi bi-cart-check-fill"></i>
+
+                <h6>
+                    Pesan Barang
+                </h6>
+
+                <small>
+                    Buat pesanan
+                </small>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- === DAFTAR ANGGOTA === -->
+
+    <section id="anggota">
+
+        <div class="section-title">
+
+            <h2>
+                Daftar Anggota
+            </h2>
+
+            <p>
+                Daftar siswa yang terdaftar sebagai anggota koperasi.
+            </p>
+
+        </div>
+
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+
+            <h5 style="font-size:14px;">
+                Data Siswa
+            </h5>
+
+
+            <div class="search-box">
+
+                <div class="input-group">
+
+                    <span class="input-group-text">
+                        <i class="bi bi-search"></i>
+                    </span>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="searchAnggota"
+                        placeholder="Cari nama siswa..."
+                        onkeyup="searchAnggota()"
+                    >
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="table-card card-custom">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>No</th>
+                        <th>NIS</th>
+                        <th>Nama Siswa</th>
+                        <th>Kelas</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="anggotaTable">
+
+                    <tr>
+                        <td>1</td>
+                        <td>2023001</td>
+                        <td>Alsya Alfatah K</td>
+                        <td>12 RPL 3</td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>2023002</td>
+                        <td>Siti Khadijah</td>
+                        <td>12 RPL 1</td>
+                    </tr>
+
+                    <tr>
+                        <td>3</td>
+                        <td>2023003</td>
+                        <td>Ahmad Santoso</td>
+                        <td>10 TSM 2</td>
+                    </tr>
+
+                    <tr>
+                        <td>4</td>
+                        <td>2023004</td>
+                        <td>Rizkia Destiani kurnia</td>
+                        <td>12 RPL 2</td>
+                    </tr>
+
+                    <tr>
+                        <td>5</td>
+                        <td>2023005</td>
+                        <td>Muhammad Fikri</td>
+                        <td>11 RPL 3</td>
+                    </tr>
+
+                    <tr>
+                        <td>6</td>
+                        <td>2023006</td>
+                        <td>Nabila Putri</td>
+                        <td>10 RPL 1</td>
+                    </tr>
+
+                    <tr>
+                        <td>7</td>
+                        <td>2023007</td>
+                        <td>Rizky Maulana</td>
+                        <td>11 TSM 2</td>
+                    </tr>
+
+                    <tr>
+                        <td>8</td>
+                        <td>2023008</td>
+                        <td>Putri Amelia</td>
+                        <td>12 RPL 1</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <div class="mt-4">
+
+            <h5 style="font-size:14px;">
+                Pegawai Koperasi
+            </h5>
+
+            <div class="table-card card-custom">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>No</th>
+                            <th>Nama Pegawai</th>
+                            <th>Jabatan</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>1</td>
+                            <td>Ibu Rina Wulandari</td>
+                            <td>Kepala Koperasi</td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td>Pak Edi Setiawan</td>
+                            <td>Administrasi</td>
+                        </tr>
+
+                        <tr>
+                            <td>3</td>
+                            <td>Ibu Siti Nurhayati</td>
+                            <td>Kasir</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section> 
+
+
+    <!-- ===  STOK BARANG === -->
+
+    <section id="stok">
+
+        <div class="section-title">
+
+            <h2>
+                Stok Barang
+            </h2>
+
+            <p>
+                Tersedia berbagai kebutuhan seragam sekolah.
+            </p>
+
+        </div>
+
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+
+            <h5 style="font-size:14px;">
+                Daftar Barang
+            </h5>
+
+
+            <div class="search-box">
+
+                <div class="input-group">
+
+                    <span class="input-group-text">
+                        <i class="bi bi-search"></i>
+                    </span>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="searchBarang"
+                        placeholder="Cari barang..."
+                        onkeyup="searchBarang()"
+                    >
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="product-grid"
+            id="productGrid"
+        >
+
+            <!-- PRODUK 1 -->
+
+            <div
+                class="product-card"
+                data-name="seragam putih abu"
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="putihh.jpeg"
+                        alt="Seragam Putih Abu"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <h6>
+                        Seragam Putih
+                    </h6>
+
+                    <div class="price">
+                        Rp 80.000
+                    </div>
+
+                    <div class="stock">
+                        Stok: 120 pcs
+                    </div>
+
+                    <button
+                        class="product-btn"
+                        onclick="openProduct(
+                            'Seragam Putih',
+                            165000,
+                            'putihh.jpeg',
+                            'seragam'
+                        )"
+                    >
+                        Lanjut →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUK 2 -->
+
+            <div
+                class="product-card"
+                data-name="almamater"
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="jas.jpeg"
+                        alt="Almamater"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <h6>
+                        Almamater
+                    </h6>
+
+                    <div class="price">
+                        Rp 65.000
+                    </div>
+
+                    <div class="stock">
+                        Stok: 35 pcs
+                    </div>
+
+                    <button
+                        class="product-btn"
+                        onclick="openProduct(
+                            'Almamater',
+                            175000,
+                            'jas.jpeg',
+                            'seragam'
+                        )"
+                    >
+                        Lanjut →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUK 3 -->
+
+            <div
+                class="product-card"
+                data-name="seragam batik"
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="batikk.jpeg"
+                        alt="Seragam Batik"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <h6>
+                        Seragam Batik
+                    </h6>
+
+                    <div class="price">
+                        Rp 95.000
+                    </div>
+
+                    <div class="stock">
+                        Stok: 60 pcs
+                    </div>
+
+                    <button
+                        class="product-btn"
+                        onclick="openProduct(
+                            'Seragam Batik',
+                            95000,
+                            'batikk.jpeg',
+                            'seragam'
+                        )"
+                    >
+                        Lanjut →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUK 4 -->
+
+            <div
+                class="product-card"
+                data-name="seragam olahraga"
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="olgaa.jpeg"
+                        alt="Seragam Olahraga"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <h6>
+                        Seragam Olahraga
+                    </h6>
+
+                    <div class="price">
+                        Rp 110.000
+                    </div>
+
+                    <div class="stock">
+                        Stok: 80 pcs
+                    </div>
+
+                    <button
+                        class="product-btn"
+                        onclick="openProduct(
+                            'Seragam Olahraga',
+                            110000,
+                            'olgaa.jpeg',
+                            'seragam'
+                        )"
+                    >
+                        Lanjut →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUK 5 -->
+
+            <div
+                class="product-card"
+                data-name="seragam jurusan"
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="jurusann.jpeg"
+                        alt="Seragam Jurusan"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <h6>
+                        Seragam Jurusan
+                    </h6>
+
+                    <div class="price">
+                        Rp 70.000
+                    </div>
+
+                    <div class="stock">
+                        Stok: 40 pcs
+                    </div>
+
+                    <button
+                        class="product-btn"
+                        onclick="openProduct(
+                            'Seragam Jurusan',
+                            120000,
+                            'jurusann.jpeg',
+                            'seragam'
+                        )"
+                    >
+                        Lanjut →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUK 6 -->
+
+            <div
+                class="product-card"
+                data-name="seragam pramuka"
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="pramukaa.jpeg"
+                        alt="Seragam Pramuka"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <h6>
+                        Seragam Pramuka
+                    </h6>
+
+                    <div class="price">
+                        Rp 120.000
+                    </div>
+
+                    <div class="stock">
+                        Stok: 50 pcs
+                    </div>
+
+                    <button
+                        class="product-btn"
+                        onclick="openProduct(
+                            'Seragam Pramuka',
+                            130000,
+                            'pramukaa.jpeg',
+                            'seragam'
+                        )"
+                    >
+                        Lanjut →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUK 7 -->
+
+            <div
+                class="product-card"
+                data-name="rok sekolah"
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="rokk.jpeg"
+                        alt="Rok Sekolah"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <h6>
+                        Rok Sekolah
+                    </h6>
+
+                    <div class="price">
+                        Rp 90.000
+                    </div>
+
+                    <div class="stock">
+                        Stok: 70 pcs
+                    </div>
+
+                    <button
+                        class="product-btn"
+                        onclick="openProduct(
+                            'Rok Sekolah',
+                            90000,
+                            'rokk.jpeg',
+                            'rok'
+                        )"
+                    >
+                        Lanjut →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUK 8 -->
+
+            <div
+                class="product-card"
+                data-name="celana sekolah"
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="celanaa.jpeg"
+                        alt="Celana Sekolah"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <h6>
+                        Celana Sekolah
+                    </h6>
+
+                    <div class="price">
+                        Rp 95.000
+                    </div>
+
+                    <div class="stock">
+                        Stok: 65 pcs
+                    </div>
+
+                    <button
+                        class="product-btn"
+                        onclick="openProduct(
+                            'Celana Sekolah',
+                            95000,
+                            'celanaa.jpeg',
+                            'celana'
+                        )"
+                    >
+                        Lanjut →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUK 9 -->
+
+            <div
+                class="product-card"
+                data-name="topi"
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="topbaru.jpeg"
+                        alt="Topi"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <h6>
+                        Topi
+                    </h6>
+
+                    <div class="price">
+                        Rp 25.000
+                    </div>
+
+                    <div class="stock">
+                        Stok: 100 pcs
+                    </div>
+
+                    <button
+                        class="product-btn"
+                        onclick="openProduct(
+                            'Topi',
+                            25000,
+                            'topbaru.jpeg',
+                            'aksesoris'
+                        )"
+                    >
+                        Lanjut →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUK 10 -->
+
+            <div
+                class="product-card"
+                data-name="dasi"
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="dasii.jpeg"
+                        alt="Dasi"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <h6>
+                        Dasi
+                    </h6>
+
+                    <div class="price">
+                        Rp 25.000
+                    </div>
+
+                    <div class="stock">
+                        Stok: 100 pcs
+                    </div>
+
+                    <button
+                        class="product-btn"
+                        onclick="openProduct(
+                            'Dasi',
+                            25000,
+                            'dasii.jpeg',
+                            'aksesoris'
+                        )"
+                    >
+                        Lanjut →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUK 11 -->
+
+            <div
+                class="product-card"
+                data-name="sabuk"
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="sabukk.jpeg"
+                        alt="Sabuk"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <h6>
+                        Sabuk
+                    </h6>
+
+                    <div class="price">
+                        Rp 20.000
+                    </div>
+
+                    <div class="stock">
+                        Stok: 100 pcs
+                    </div>
+
+                    <button
+                        class="product-btn"
+                        onclick="openProduct(
+                            'Sabuk',
+                            20000,
+                            'sabukk.jpeg',
+                            'aksesoris'
+                        )"
+                    >
+                        Lanjut →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUK 12 -->
+
+            <div
+                class="product-card"
+                data-name="atribut sekolah"
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="ributt.jpeg"
+                        alt="Atribut Sekolah"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <h6>
+                        Atribut Sekolah
+                    </h6>
+
+                    <div class="price">
+                        Rp 15.000
+                    </div>
+
+                    <div class="stock">
+                        Stok: 150 pcs
+                    </div>
+
+                    <button
+                        class="product-btn"
+                        onclick="openProduct(
+                            'Atribut Sekolah',
+                            15000,
+                            'ributt.jpeg',
+                            'aksesoris'
+                        )"
+                    >
+                        Lanjut →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- === DETAIL PRODUK === -->
+
+    <section id="detail">
+
+        <div class="section-title">
+
+            <h2>
+                Detail Produk
+            </h2>
+
+            <p>
+                Pilih ukuran dan jumlah barang yang ingin dipesan.
+            </p>
+
+        </div>
+
+
+        <div class="detail-wrapper">
+
+
+            <!-- FOTO KIRI -->
+
+            <div class="detail-photo">
+
+                <img
+                    src="putih.jpg"
+                    id="detailImage"
+                    alt="Produk"
+                >
+
+            </div>
+
+
+            <!-- INFORMASI KANAN -->
+
+            <div class="detail-content">
+
+                <a
+                    href="#stok"
+                    class="back-link"
+                >
+                    ← Kembali ke Stok
+                </a>
+
+
+                <h2 id="detailName">
+                    Seragam Putih
+                </h2>
+
+
+                <div
+                    class="detail-price"
+                    id="detailPrice"
+                >
+                    Rp 80.000
+                </div>
+
+
+                <p class="detail-description">
+                    Produk berkualitas yang nyaman digunakan
+                    untuk kegiatan sekolah sehari-hari.
+                </p>
+
+
+                <!-- UKURAN BAJU -->
+
+                <div id="bajuOption">
+
+                    <div class="option-title">
+                        Ukuran Baju
+                    </div>
+
+                    <div class="option-buttons">
+
+                        <button onclick="selectOption(this, 'baju')">
+                            S
+                        </button>
+
+                        <button onclick="selectOption(this, 'baju')">
+                            M
+                        </button>
+
+                        <button onclick="selectOption(this, 'baju')">
+                            L
+                        </button>
+
+                        <button onclick="selectOption(this, 'baju')">
+                            XL
+                        </button>
+
+                        <button onclick="selectOption(this, 'baju')">
+                            XXL
+                        </button>
+
+                    </div>
+
+                    <small
+                        id="selectedBaju"
+                        style="font-size:8px;color:#0d55c7;"
+                    >
+                        Ukuran baju belum dipilih
+                    </small>
+
+                </div>
+
+
+                <!-- UKURAN ROK -->
+
+                <div id="rokOption">
+
+                    <div class="option-title">
+                        Ukuran Rok
+                    </div>
+
+                    <div class="option-buttons">
+
+                        <button onclick="selectOption(this, 'rok')">
+                            28
+                        </button>
+
+                        <button onclick="selectOption(this, 'rok')">
+                            30
+                        </button>
+
+                        <button onclick="selectOption(this, 'rok')">
+                            32
+                        </button>
+
+                        <button onclick="selectOption(this, 'rok')">
+                            34
+                        </button>
+
+                        <button onclick="selectOption(this, 'rok')">
+                            36
+                        </button>
+
+                    </div>
+
+                    <small
+                        id="selectedRok"
+                        style="font-size:8px;color:#0d55c7;"
+                    >
+                        Ukuran rok belum dipilih
+                    </small>
+
+                </div>
+
+
+                <!-- UKURAN CELANA -->
+
+                <div id="celanaOption">
+
+                    <div class="option-title">
+                        Ukuran Celana
+                    </div>
+
+                    <div class="option-buttons">
+
+                        <button onclick="selectOption(this, 'celana')">
+                            28
+                        </button>
+
+                        <button onclick="selectOption(this, 'celana')">
+                            30
+                        </button>
+
+                        <button onclick="selectOption(this, 'celana')">
+                            32
+                        </button>
+
+                        <button onclick="selectOption(this, 'celana')">
+                            34
+                        </button>
+
+                        <button onclick="selectOption(this, 'celana')">
+                            36
+                        </button>
+
+                    </div>
+
+                    <small
+                        id="selectedCelana"
+                        style="font-size:8px;color:#0d55c7;"
+                    >
+                        Ukuran celana belum dipilih
+                    </small>
+
+                </div>
+
+
+                <!-- JUMLAH -->
+
+                <div class="option-title">
+                    Jumlah
+                </div>
+
+                <div class="quantity">
+
+                    <button onclick="kurang()">
+                        −
+                    </button>
+
+                    <span id="jumlah">
+                        1
+                    </span>
+
+                    <button onclick="tambah()">
+                        +
+                    </button>
+
+                </div>
+
+
+                <button
+                    class="continue-btn"
+                    onclick="lanjutPembayaran()"
+                >
+                    Lanjut →
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===  PENGAMBILAN & PEMBAYARAN === -->
+
+    <section id="pembayaran">
+
+        <div class="section-title">
+
+            <h2>
+                Opsi Pengambilan & Pembayaran
+            </h2>
+
+            <p>
+                Tentukan cara pengambilan dan pembayaran pesanan.
+            </p>
+
+        </div>
+
+
+        <h5 style="font-size:13px;margin-bottom:12px;">
+            Opsi Pengambilan
+        </h5>
+
+
+        <div class="choice-grid">
+
+            <div
+                class="choice-card"
+                onclick="pilihPengambilan(this, 'Ambil Saat Istirahat')"
+            >
+
+                <i class="bi bi-clock-fill"></i>
+
+                <h6>
+                    Ambil Saat Istirahat
+                </h6>
+
+                <p>
+                    Pesanan diambil di koperasi saat jam istirahat.
+                </p>
+
+            </div>
+
+
+            <div
+                class="choice-card"
+                onclick="pilihPengambilan(this, 'Ambil Saat Pulang')"
+            >
+
+                <i class="bi bi-door-open-fill"></i>
+
+                <h6>
+                    Ambil Saat Pulang
+                </h6>
+
+                <p>
+                    Pesanan diambil ketika jam pulang sekolah.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div style="font-size:8px;color:#0d55c7;margin-top:8px;">
+            Pengambilan: <span id="pengambilanText">
+                Belum dipilih
+            </span>
+        </div>
+
+
+        <h5 style="font-size:13px;margin-top:25px;margin-bottom:12px;">
+            Metode Pembayaran
+        </h5>
+
+
+        <div class="choice-grid">
+
+            <div
+                class="choice-card"
+                onclick="pilihPembayaran(this, 'Cash')"
+            >
+
+                <i class="bi bi-cash-stack"></i>
+
+                <h6>
+                    Cash
+                </h6>
+
+                <p>
+                    Bayar langsung secara tunai di kasir koperasi.
+                </p>
+
+            </div>
+
+
+            <div
+                class="choice-card"
+                onclick="pilihPembayaran(this, 'Debit')"
+            >
+
+                <i class="bi bi-credit-card-fill"></i>
+
+                <h6>
+                    Debit
+                </h6>
+
+                <p>
+                    Bayar menggunakan kartu debit melalui mesin pembayaran.
+                </p>
+
+            </div>
+
+
+            <div
+                class="choice-card"
+                onclick="pilihPembayaran(this, 'Cicil')"
+            >
+
+                <i class="bi bi-calendar-check-fill"></i>
+
+                <h6>
+                    Cicil
+                </h6>
+
+                <p>
+                    Pembayaran dilakukan secara cicilan.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div style="font-size:8px;color:#0d55c7;margin-top:8px;">
+            Pembayaran:
+            <span id="pembayaranText">
+                Belum dipilih
+            </span>
+        </div>
+
+
+        <!-- RINGKASAN -->
+
+        <div class="summary-card">
+
+            <h5>
+                Ringkasan Pesanan
+            </h5>
+
+
+            <div class="summary-row">
+
+                <span>
+                    Produk
+                </span>
+
+                <b id="summaryProduct">
+                    Seragam Putih Abu
+                </b>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>
+                    Ukuran Baju
+                </span>
+
+                <b id="summaryBaju">
+                    Belum dipilih
+                </b>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>
+                    Ukuran Rok
+                </span>
+
+                <b id="summaryRok">
+                    Belum dipilih
+                </b>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>
+                    Ukuran Celana
+                </span>
+
+                <b id="summaryCelana">
+                    Belum dipilih
+                </b>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>
+                    Jumlah
+                </span>
+
+                <b id="summaryJumlah">
+                    1
+                </b>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>
+                    Pengambilan
+                </span>
+
+                <b id="summaryPengambilan">
+                    Belum dipilih
+                </b>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>
+                    Pembayaran
+                </span>
+
+                <b id="summaryPembayaran">
+                    Belum dipilih
+                </b>
+
+            </div>
+
+
+            <div class="summary-row total">
+
+                <span>
+                    Total
+                </span>
+
+                <b id="summaryTotal">
+                    Rp 165.000
+                </b>
+
+            </div>
+
+
+            <button
+                class="order-btn"
+                onclick="pesanSekarang()"
+            >
+                <i class="bi bi-check-circle-fill"></i>
+                Pesan Sekarang
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+
+        © 2026 Koperasi Sekolah SMK Muthia Harapan
+
+    </footer>
+
+</main>
+
+
+<!-- === JAVASCRIPT === -->
+
+<script>
+
+    /* === DATA PRODUK === */
+
+    let currentProduct = {
+        name: "Seragam Putih Abu",
+        price: 80000,
+        image: "putihh.jpeg",
+        type: "seragam"
+    };
+
+
+    let jumlahProduk = 1;
+
+    let ukuranBaju = "";
+
+    let ukuranRok = "";
+
+    let ukuranCelana = "";
+
+    let pilihanPengambilan = "";
+
+    let pilihanPembayaran = "";
+
+
+    /* === LOGIN === */
+
+    function login() {
+
+        const username =
+            document.getElementById("username").value.trim();
+
+        const password =
+            document.getElementById("password").value.trim();
+
+        const error =
+            document.getElementById("loginError");
+
+
+        if (username === "" || password === "") {
+
+            error.style.display = "block";
+
+            return;
+        }
+
+
+        error.style.display = "none";
+
+        document.getElementById("loginPage").style.display = "none";
+
+        document.getElementById("beranda")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }
+
+
+    /* === LOGOUT === */
+
+    function logout() {
+
+        document.getElementById("loginPage").style.display = "flex";
+
+        document.getElementById("username").value = "";
+
+        document.getElementById("password").value = "";
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+
+    /* === MENU ACTIVE === */
+
+    function setActive(element) {
+
+        document
+            .querySelectorAll(".menu a")
+            .forEach(function(item) {
+
+                item.classList.remove("active");
+
+            });
+
+
+        element.classList.add("active");
+
+    }
+
+
+    /* === PENCARIAN ANGGOTA === */
+
+    function searchAnggota() {
+
+        const input =
+            document
+            .getElementById("searchAnggota")
+            .value
+            .toLowerCase();
+
+
+        const rows =
+            document
+            .querySelectorAll("#anggotaTable tr");
+
+
+        rows.forEach(function(row) {
+
+            const text =
+                row.innerText.toLowerCase();
+
+
+            if (text.includes(input)) {
+
+                row.style.display = "";
+
+            } else {
+
+                row.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+
+    /* === PENCARIAN BARANG === */
+
+    function searchBarang() {
+
+        const input =
+            document
+            .getElementById("searchBarang")
+            .value
+            .toLowerCase();
+
+
+        const products =
+            document
+            .querySelectorAll(".product-card");
+
+
+        products.forEach(function(product) {
+
+            const name =
+                product
+                .getAttribute("data-name")
+                .toLowerCase();
+
+
+            if (name.includes(input)) {
+
+                product.style.display = "";
+
+            } else {
+
+                product.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+
+    /* === BUKA DETAIL PRODUK === */
+
+    function openProduct(
+        name,
+        price,
+        image,
+        type
+    ) {
+
+        currentProduct.name = name;
+
+        currentProduct.price = price;
+
+        currentProduct.image = image;
+
+        currentProduct.type = type;
+
+
+        document
+            .getElementById("detailName")
+            .innerText = name;
+
+
+        document
+            .getElementById("detailPrice")
+            .innerText =
+            formatRupiah(price);
+
+
+        document
+            .getElementById("detailImage")
+            .src = image;
+
+
+        /* RESET */
+
+        jumlahProduk = 1;
+
+        ukuranBaju = "";
+
+        ukuranRok = "";
+
+        ukuranCelana = "";
+
+
+        document
+            .getElementById("jumlah")
+            .innerText = "1";
+
+
+        resetOptions();
+
+
+        /*
+         * SEMBUNYIKAN SEMUA UKURAN
+         * TERLEBIH DAHULU
+         */
+
+        document
+            .getElementById("bajuOption")
+            .style.display = "none";
+
+
+        document
+            .getElementById("rokOption")
+            .style.display = "none";
+
+
+        document
+            .getElementById("celanaOption")
+            .style.display = "none";
+
+
+        /*
+         * PRODUK SERAGAM / ALMAMATER
+         * HANYA PILIH UKURAN BAJU
+         */
+
+        if (
+            type === "seragam"
+        ) {
+
+            document
+                .getElementById("bajuOption")
+                .style.display = "block";
+
+        }
+
+
+        /*
+         * ROK
+         */
+
+        if (
+            type === "rok"
+        ) {
+
+            document
+                .getElementById("rokOption")
+                .style.display = "block";
+
+        }
+
+
+        /*
+         * CELANA
+         */
+
+        if (
+            type === "celana"
+        ) {
+
+            document
+                .getElementById("celanaOption")
+                .style.display = "block";
+
+        }
+
+
+        updateSummary();
+
+
+        document
+            .getElementById("detail")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }
+
+
+    /* === RESET PILIHAN === */
+
+    function resetOptions() {
+
+        document
+            .querySelectorAll(".option-buttons button")
+            .forEach(function(button) {
+
+                button.classList.remove("selected");
+
+            });
+
+
+        document
+            .getElementById("selectedBaju")
+            .innerText =
+            "Ukuran baju belum dipilih";
+
+
+        document
+            .getElementById("selectedRok")
+            .innerText =
+            "Ukuran rok belum dipilih";
+
+
+        document
+            .getElementById("selectedCelana")
+            .innerText =
+            "Ukuran celana belum dipilih";
+
+    }
+
+
+    /* === PILIH UKURAN === */
+
+    function selectOption(button, type) {
+
+        const parent =
+            button.parentElement;
+
+
+        parent
+            .querySelectorAll("button")
+            .forEach(function(btn) {
+
+                btn.classList.remove("selected");
+
+            });
+
+
+        button.classList.add("selected");
+
+
+        const value =
+            button.innerText;
+
+
+        if (type === "baju") {
+
+            ukuranBaju = value;
+
+            document
+                .getElementById("selectedBaju")
+                .innerText =
+                "Ukuran baju: " + value;
+
+        }
+
+
+        if (type === "rok") {
+
+            ukuranRok = value;
+
+            document
+                .getElementById("selectedRok")
+                .innerText =
+                "Ukuran rok: " + value;
+
+        }
+
+
+        if (type === "celana") {
+
+            ukuranCelana = value;
+
+            document
+                .getElementById("selectedCelana")
+                .innerText =
+                "Ukuran celana: " + value;
+
+        }
+
+
+        updateSummary();
+
+    }
+
+
+    /* === JUMLAH === */
+    function tambah() {
+
+        jumlahProduk++;
+
+        document
+            .getElementById("jumlah")
+            .innerText = jumlahProduk;
+
+        updateSummary();
+
+    }
+
+
+    function kurang() {
+
+        if (jumlahProduk > 1) {
+
+            jumlahProduk--;
+
+        }
+
+        document
+            .getElementById("jumlah")
+            .innerText = jumlahProduk;
+
+        updateSummary();
+
+    }
+
+
+    /* === LANJUT PEMBAYARAN === */
+
+    function lanjutPembayaran() {
+
+        /*
+         * CEK UKURAN UNTUK SERAGAM
+         */
+
+        if (
+            currentProduct.type === "seragam"
+            &&
+            ukuranBaju === ""
+        ) {
+
+            alert("Silakan pilih ukuran baju terlebih dahulu.");
+
+            return;
+
+        }
+
+
+        if (
+            currentProduct.type === "rok"
+            &&
+            ukuranRok === ""
+        ) {
+
+            alert("Silakan pilih ukuran rok terlebih dahulu.");
+
+            return;
+
+        }
+
+
+        if (
+            currentProduct.type === "celana"
+            &&
+            ukuranCelana === ""
+        ) {
+
+            alert("Silakan pilih ukuran celana terlebih dahulu.");
+
+            return;
+
+        }
+
+
+        updateSummary();
+
+
+        document
+            .getElementById("pembayaran")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }
+
+
+    /* === PILIH PENGAMBILAN === */
+
+    function pilihPengambilan(
+        element,
+        value
+    ) {
+
+        document
+            .querySelectorAll(
+                ".choice-card"
+            )
+            .forEach(function(card) {
+
+                /*
+                 * hanya bagian pengambilan
+                 * akan diseleksi melalui index
+                 */
+
+            });
+
+
+        const cards =
+            document
+            .querySelectorAll(
+                "#pembayaran .choice-card"
+            );
+
+
+        /*
+         * dua kartu pertama = pengambilan
+         */
+
+        cards[0].classList.remove("selected");
+
+        cards[1].classList.remove("selected");
+
+
+        element.classList.add("selected");
+
+
+        pilihanPengambilan = value;
+
+
+        document
+            .getElementById("pengambilanText")
+            .innerText = value;
+
+
+        updateSummary();
+
+    }
+
+
+    /* === PILIH PEMBAYARAN === */
+
+    function pilihPembayaran(
+        element,
+        value
+    ) {
+
+        const cards =
+            document
+            .querySelectorAll(
+                "#pembayaran .choice-card"
+            );
+
+
+        /*
+         * kartu index 2,3,4 = pembayaran
+         */
+
+        cards[2].classList.remove("selected");
+        cards[3].classList.remove("selected");
+        cards[4].classList.remove("selected");
+
+        element.classList.add("selected");
+
+        pilihanPembayaran = value;
+        document.getElementById("pembayaranText").innerText = value;
+
+        updateSummary();
+
+    }
+    
+    /* === UPDATE SUMMARY === */
+    function updateSummary() {
+        document.getElementById("summaryProduct").innerText = currentProduct.name;
+
+        document.getElementById("summaryBaju").innerText = ukuranBaju || "Belum dipilih";
+        document.getElementById("summaryRok").innerText = ukuranRok || "Belum dipilih";
+        document.getElementById("summaryCelana").innerText = ukuranCelana || "Belum dipilih";
+        document.getElementById("summaryJumlah").innerText = jumlahProduk;
+        document.getElementById("summaryPengambilan").innerText = pilihanPengambilan || "Belum dipilih";
+        document.getElementById("summaryPembayaran").innerText = pilihanPembayaran || "Belum dipilih";
+
+        const total = currentProduct.price * jumlahProduk ;
+        document.getElementById("summaryTotal").innerText = formatRupiah(total);
+    
+    }
+
+    /* === FORMAT RUPIAH === */
+    function formatRupiah(number) {
+    return new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+        minimumFractionDigits: 0
+    }).format(number);
+}
+
+    /* === PESAN SEKARANG === */ 
+    function pesanSekarang() {
+        if (
+            currentProduct.type === "seragam" && ukuranBaju === ""
+        ) {
+          alert("Silakan pilih ukuran baju.");
+          return;
+        }
+
+        if (
+            currentProduct.type === "rok" && ukuranRok === ""
+        ) {
+            alert ("Silakan pilih ukuran rok.");
+            return;
+        }
+
+         if (
+            currentProduct.type === "celana" && ukuranCelana === ""
+        ) {
+            alert ("Silakan pilih ukuran celana.");
+            return;
+        }
+
+        if(
+            pilihanPengambilan === ""
+        ){
+            alert ("Silakan pilih opsi pengambilan.");
+            return;
+        }
+
+          if(
+            pilihanPembayaran === ""
+        ){
+            alert ("Silakan pilih metode pembayaran.");
+            return;
+        }
+
+        const total = currentProduct.price * jumlahProduk;
+
+        alert(
+            "Pesanan berhasil dibuat!\n\n" +
+
+            "Produk: " + currentProduct.name + 
+
+            "\nJumlah : " +
+            jumlahProduk +
+
+            "\nTotal : " +
+            formatRupiah(total) +
+
+            "\nPengambilan: " +
+            pilihanPengambilan +
+
+            "\nPembayaran: " +
+            pilihanPembayaran 
+        );
+          
+    }
+    </script>
+
+    /* === BOOTSTARP JS === */
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+    </body>
+    </html>
